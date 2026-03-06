@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-brain"></i> My Quiz Website</h1>
+        <nav>
+            <a href="#about">About</a>
+        </nav>
+    </header>
+    <div id="quiz-container">
+        <div id="progress-bar">
+            <div id="progress"></div>
+        </div>
+        <div id="question-container">
+            <div class="question" id="question"><i class="fas fa-question-circle"></i> Loading...</div>
+            <div class="options" id="options"></div>
+        </div>
+        <button id="next-btn" style="display: none;"><i class="fas fa-arrow-right"></i> Next</button>
+        <div id="result" style="display: none;"></div>
+        <button id="restart-btn" style="display: none;"><i class="fas fa-redo"></i> Restart Quiz</button>
+    </div>
+    <div id="about-section" style="display: none; max-width: 600px; margin: 20px auto; padding: 20px; background: white; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+        <h2>About This Quiz</h2>
+        <p>This quiz tests your knowledge on various topics. Built with HTML, CSS, and JavaScript. Enjoy!</p>
+    </div>
+    <footer>
+        <p>&copy; 2023 Quiz App. Built with HTML, CSS & JS.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
