@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body 
+    style="font-family: 'Arial', sans-serif; margin: 0; padding: 0; background: #f4f4f4 url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed; background-size: cover; color: #333; transition: background 0.3s, color 0.3s, text-shadow 0.3s; line-height: 1.6;">
+   
+
+    <header>
+        <h1>Welcome to My Portfolio</h1>
+        <p>Rahul Bagoria | Computer Science Engineering Student</p>
+        <button id="themeToggle" class="theme-toggle">Toggle Dark Mode</button>
+    </header>
+
+    
+    <nav>
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <a href="#comments">Comments</a>
+    </nav>
+
+    
+    <section id="about" class="about fade-in">
+        <h2>About Me</h2>
+        <p>
+            Hello! My name is Rahul Bagoria.<br>
+            I am a Computer Science Engineering student.<br>
+            I am interested in Web Development and learning new technologies.
+        </p>
+    </section>
+
+    
+    <section id="education" class="education fade-in">
+        <h2>Education</h2>
+        <ul>
+            <li>B.Tech – Computer Science Engineering</li>
+            <li>XYZ University</li>
+            <li>2nd Year</li>
+        </ul>
+    </section>
+
+    
+    <section id="skills" class="skills fade-in">
+        <h2>Skills</h2>
+        <ul>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript (Basic)</li>
+            <li>Java</li>
+            <li>DSA (Beginner)</li>
+        </ul>
+    </section>
+
+    
+    <section id="experience" class="experience fade-in">
+        <h2>Internship Experience</h2>
+        <p>
+            I have completed an internship in Web Development where I worked on real-world projects.
+            During this internship, I improved my frontend skills and learned how professional
+            websites are built.
+        </p>
+        <ul>
+            <li>Developed responsive web pages using HTML, CSS, and JavaScript.</li>
+            <li>Collaborated on team projects and learned version control with Git.</li>
+            <li>Gained experience in debugging and optimizing code for performance.</li>
+        </ul>
+    </section>
+
+    
+    <section id="projects" class="projects fade-in">
+        <h2>Projects</h2>
+        <div class="project-grid">
+            <div class="project" data-image="https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=1200&q=80" alt="Web Development Project">
+                <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=800&q=80" alt="Web Development Project">
+                <h3>Web Development Project</h3>
+                <p>A responsive website built with HTML, CSS, and JS.</p>
+            </div>
+            <div class="project" data-image="https://via.placeholder.com/400x300/764ba2/ffffff?text=Java+App">
+                <img src="https://via.placeholder.com/400x300/764ba2/ffffff?text=Java+App" alt="Java Application">
+                <h3>Java Application</h3>
+                <p>A simple console app demonstrating OOP concepts.</p>
+            </div>
+            <div class="project" data-image="https://via.placeholder.com/400x300/ffd700/000000?text=DSA+Practice">
+                <img src="https://via.placeholder.com/400x300/ffd700/000000?text=DSA+Practice" alt="DSA Practice">
+                <h3>DSA Practice</h3>
+                <p>Code snippets and solutions for data structures and algorithms.</p>
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="contact" class="contact fade-in">
+        <h2>Contact Me</h2>
+        <p>Email: <a href="mailto:rahul140706@gmail.com?subject=Portfolio%20Inquiry&amp;body=Hello%20Rahul%2C%0A%0AI%20saw%20your%20portfolio%20and%20would%20like%20to%20connect.%0A%0ARegards%2C%0A">rahul140706@gmail.com</a></p>
+        <p>LinkedIn:   <a href="https://linkedin.com/in/rahulbagoria" target="_blank"> linkedin.com/in/rahulbagoria</a></p>
+        <p>GitHub: <a href="https://github.com/rahulbagoria" target="_blank">github.com/rahulbagoria</a></p>
+    </section>
+
+    
+    <section id="comments" class="comments fade-in">
+        <h2>Leave a Comment</h2>
+        <div class="comment-container">
+            <form id="commentForm">
+                <input type="text" id="commentName" placeholder="Your Name" required>
+                <textarea id="commentText" placeholder="Your Comment" required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+            <div id="commentsList"></div>
+        </div>
+    </section>
+
+    <div class="lightbox" id="lightbox">
+        <span class="close">&times;</span>
+        <span class="nav prev">&larr;</span>
+        <img id="lightboxImg" src="" alt="Project Image">
+        <span class="nav next">&rarr;</span>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
+
