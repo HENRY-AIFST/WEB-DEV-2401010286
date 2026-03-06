@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Responsive Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> <!-- For icons -->
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-rocket"></i> Creative Space</h1>
+        <nav>
+            <ul id="nav-menu">
+                <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#about"><i class="fas fa-info-circle"></i> About</a></li>
+                <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h2>Welcome to the Future</h2>
+                <p>Explore creativity and responsiveness in web design. Click the button for a surprise!</p>
+                <button id="myButton" class="btn-creative"><i class="fas fa-magic"></i> Click Me</button>
+                <p id="output" class="fade-in"></p>
+            </div>
+            <div class="hero-bg"></div>
+        </section>
+        <section id="about" class="card-section">
+            <div class="card">
+                <h2>About Us</h2>
+                <p>We blend art and technology to create stunning, user-friendly experiences. Our designs adapt to any device, ensuring everyone enjoys the magic.</p>
+                <div class="skills">
+                    <div class="skill-bar"><span>Creativity</span><div class="progress" style="width: 90%;"></div></div>
+                    <div class="skill-bar"><span>Responsiveness</span><div class="progress" style="width: 95%;"></div></div>
+                    <div class="skill-bar"><span>Innovation</span><div class="progress" style="width: 85%;"></div></div>
+                </div>
+            </div>
+        </section>
+        <section id="contact" class="form-section">
+            <h2>Get in Touch</h2>
+            <form id="contactForm" class="creative-form">
+                <div class="form-group">
+                    <label for="name"><i class="fas fa-user"></i> Name:</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email"><i class="fas fa-envelope"></i> Email:</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message"><i class="fas fa-comment"></i> Message:</label>
+                    <textarea id="message" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn-creative"><i class="fas fa-paper-plane"></i> Send</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Creative Responsive Website. Built with <i class="fas fa-heart"></i></p>
+        <button id="theme-toggle" class="btn-toggle"><i class="fas fa-moon"></i> Toggle Theme</button>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
