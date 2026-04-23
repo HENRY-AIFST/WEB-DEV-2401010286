@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% block title %}Dashboard — NEXUS Contacts{% endblock %}
+{% block content %}
+
+<!-- HERO STATS BAR -->
+<section class="stats-bar">
+  <div class="stat-card">
+    <span class="stat-num">{{ total }}</span>
+    <span class="stat-label">Total Contacts</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-num">{{ contacts | length }}</span>
+    <span class="stat-label">{% if query %}Matched{% else %}Active{% endif %}</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-num stat-accent">∞</span>
+    <span class="stat-label">Storage Free</span>
+  </div>
+</section>
+
+<!-- PAGE HEADER + SEARCH -->
+<section class="page-header">
+  <div class="ph-left">
+    <div class="page-eyebrow">CONTACT DIRECTORY</div>
+    <h1 class="page-title">
+      {% if query %}Results for <em>"{{ query }}"</em>{% else %}All Contacts{% endif %}
+    </h1>
+  </div>
+
+  <form class="search-form" method="GET" action="{{ url_for('index') }}">
+    <div class="search-wrap">
+      <svg class="search-icon-svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" name="q" class="search-input" placeholder="Search name, phone, role…" value="{{ query }}" autocomplete="off"/>
+      {% if query %}<a href="{{ url_for('index') }}" class="search-clear">✕</a>{% endif %}
+    </div>
+    <button type="submit" class="btn btn-ghost-sm">Search</button>
+  </form>
+</section>
+
+<!-- CONTACT GRID -->
+{% if contacts %}
+  <div class="contacts-grid">
+    {% for c in contacts %}
+    <div class="contact-card" style="animation-delay: {{ loop.index0 * 0.06 }}s">
+
+      <!-- Card top accent line -->
+      <div class="card-accent-line"></div>
+
+      <!-- Avatar + info -->
+      <div class="card-header">
+        <div class="avatar-wrap">
+          <div class="avatar" data-letter="{{ c.name[0] | upper }}">
+            {{ c.name[0] | upper }}
+          </div>
+          <div class="avatar-ring"></div>
+        </div>
+        <div class="card-meta">
+          <div class="card-name">{{ c.name }}</div>
+          <div class="card-role">{{ c.get('role', 'Contact') }}</div>
+        </div>
+        <div class="card-index">#{{ '%02d' % loop.index }}</div>
+      </div>
+
+      <!-- Contact details -->
+      <div class="card-body">
+        <a href="tel:{{ c.phone }}" class="card-detail">
+          <span class="detail-icon">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 0 0 0 2.22 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </span>
+          <span>{{ c.phone }}</span>
+        </a>
+        <a href="mailto:{{ c.email }}" class="card-detail">
+          <span class="detail-icon">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </span>
+          <span>{{ c.email }}</span>
+        </a>
+      </div>
+
+      <!-- Actions -->
+      <div class="card-footer">
+        <a href="{{ url_for('edit_contact', id=c.id) }}" class="btn-card btn-edit-card">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+          Edit
+        </a>
+        <a href="{{ url_for('delete_contact', id=c.id) }}"
+           class="btn-card btn-delete-card"
+           onclick="return confirm('Remove {{ c.name }} from NEXUS?')">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg>
+          Delete
+        </a>
+      </div>
+
+    </div>
+    {% endfor %}
+  </div>
+
+{% else %}
+  <!-- EMPTY STATE -->
+  <div class="empty-state">
+    <div class="empty-glyph">◎</div>
+    <h2 class="empty-title">
+      {% if query %}No match for "{{ query }}"{% else %}No contacts yet{% endif %}
+    </h2>
+    <p class="empty-sub">
+      {% if query %}Try different keywords or <a href="{{ url_for('index') }}">clear search</a>.
+      {% else %}Your NEXUS directory is empty. Add your first contact to get started.{% endif %}
+    </p>
+    {% if not query %}
+      <a href="{{ url_for('add_contact') }}" class="btn btn-primary btn-lg">+ Add First Contact</a>
+    {% endif %}
+  </div>
+{% endif %}
+
+{% endblock %}
